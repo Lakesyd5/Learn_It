@@ -40,9 +40,7 @@ void main() {
         ),
       );
 
-      verify(
-        () => repo.cacheFirstTimer(),
-      ).called(1);
+      verify(() => repo.cacheFirstTimer()).called(1);
       verifyNoMoreInteractions(repo);
     },
   );
