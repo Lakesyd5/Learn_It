@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:learn_it/core/res/colours.dart';
 import 'package:learn_it/core/res/fonts.dart';
+import 'package:learn_it/core/services/injection_container.dart';
 import 'package:learn_it/core/services/router.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await init();
   runApp(const MainApp());
 }
 
