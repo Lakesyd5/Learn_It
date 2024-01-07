@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:learn_it/core/errors/failures.dart';
 import 'package:learn_it/src/on_boarding/domain/usecases/cache_first_timer.dart';
-import 'package:learn_it/src/on_boarding/domain/usecases/check_if_user_is_firsttimer.dart';
+import 'package:learn_it/src/on_boarding/domain/usecases/check_if_user_is_first_timer.dart';
 import 'package:learn_it/src/on_boarding/presentation/cubit/cubit/on_boarding_cubit.dart';
 import 'package:mocktail/mocktail.dart';
 
