@@ -38,7 +38,7 @@ class LocalUserModel extends LocalUser {
           following: (map['following'] as List<dynamic>).cast<String>(),
         );
 
-  LocalUser copyWith({
+  LocalUserModel copyWith({
     String? uid,
     String? email,
     String? profilePic,
@@ -50,7 +50,7 @@ class LocalUserModel extends LocalUser {
     List<String>? followers,
     List<String>? following,
   }) {
-    return LocalUser(
+    return LocalUserModel(
       uid: uid ?? this.uid,
       email: email ?? this.email,
       points: points ?? this.points,
