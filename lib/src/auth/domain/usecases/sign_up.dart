@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:learn_it/core/usecases/usecases.dart';
-import 'package:learn_it/core/utils/typeDefs.dart';
+import 'package:learn_it/core/utils/typedefs.dart';
 import 'package:learn_it/src/auth/domain/repos/auth_repo.dart';
 
 class SignUp extends UsecaseWithParams<void, SignUpParams> {
