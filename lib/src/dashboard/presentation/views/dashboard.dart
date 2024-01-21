@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_it/core/extensions/context_extensions.dart';
 
@@ -13,13 +14,9 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
-    return Placeholder(
-      child: Center(
-        child: Text(
-          'DASHBOARD',
-          style: context.theme.textTheme.bodyLarge?.copyWith(color: Colors.white),
-        ),
-      ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: ListView()
     );
   }
 }
