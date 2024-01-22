@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:learn_it/core/extensions/context_extensions.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -16,7 +14,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView()
+      body: ListView(),
     );
   }
 }
