@@ -7,6 +7,7 @@ import 'package:learn_it/core/services/injection_container.dart';
 import 'package:learn_it/core/services/router.dart';
 
 import 'package:learn_it/firebase_options.dart';
+import 'package:learn_it/src/dashboard/presentation/providers/dashboard_controller.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -23,8 +24,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => UserProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => DashboardController()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Learn_it',
@@ -35,7 +39,8 @@ class MainApp extends StatelessWidget {
           appBarTheme: const AppBarTheme(
             color: Colors.transparent,
           ),
-          colorScheme: ColorScheme.fromSwatch(accentColor: Colours.primaryColor),
+          colorScheme:
+              ColorScheme.fromSwatch(accentColor: Colours.primaryColor),
         ),
         onGenerateRoute: generateRoute,
       ),
