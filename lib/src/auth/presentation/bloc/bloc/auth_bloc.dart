@@ -82,7 +82,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _updateUserHandler(
-      UpdateUserEvent event, Emitter<AuthState> emit) async {
+      UpdateUserEvent event, Emitter<AuthState> emit,) async {
     final result = await _updateUser(
       UpdateUserParams(action: event.action, userData: event.userData),
     );

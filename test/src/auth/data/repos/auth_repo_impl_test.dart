@@ -85,7 +85,7 @@ void main() {
       () async {
         when(() => authRemoteDataSource.signIn(
             email: any(named: 'email'),
-            password: any(named: 'password'))).thenAnswer(
+            password: any(named: 'password'),),).thenAnswer(
           (_) async => Future.value(tUser),
         );
 
@@ -110,7 +110,7 @@ void main() {
       () async {
         when(() => authRemoteDataSource.signIn(
             email: any(named: 'email'),
-            password: any(named: 'password'))).thenThrow(
+            password: any(named: 'password'),),).thenThrow(
           const ServerException(
             message: 'Unknown error occured',
             statusCode: '400',
@@ -192,7 +192,7 @@ void main() {
         );
 
         final result = await repoImpl.signUp(
-            email: tEmail, fullName: tFullName, password: tPassword);
+            email: tEmail, fullName: tFullName, password: tPassword,);
 
         expect(
           result,
@@ -224,12 +224,12 @@ void main() {
       () async {
         when(() => authRemoteDataSource.updateUser(
             action: tUpdateAction,
-            userData: any<dynamic>(named: 'userData'))).thenAnswer(
+            userData: any<dynamic>(named: 'userData'),),).thenAnswer(
           (_) => Future.value(),
         );
 
         final result = await repoImpl.updateUser(
-            action: tUpdateAction, userData: tUserData);
+            action: tUpdateAction, userData: tUserData,);
 
         expect(result, equals(const Right<dynamic, void>(null)));
         verify(

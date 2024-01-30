@@ -50,7 +50,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       await _authClient.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       throw ServerException(
-          message: e.message ?? 'Unknown error', statusCode: e.code);
+          message: e.message ?? 'Unknown error', statusCode: e.code,);
     } catch (e, s) {
       debugPrintStack(stackTrace: s);
       throw ServerException(message: e.toString(), statusCode: '505');
@@ -64,12 +64,12 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   }) async {
     try {
       final result = await _authClient.signInWithEmailAndPassword(
-          email: email, password: password);
+          email: email, password: password,);
       final user = result.user;
 
       if (user == null) {
         throw const ServerException(
-            message: 'Please try again later', statusCode: 'Unknown Error');
+            message: 'Please try again later', statusCode: 'Unknown Error',);
       }
 
       var userData = await _getUserData(user.uid);
@@ -85,7 +85,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       return LocalUserModel.fromMap(userData.data()!);
     } on FirebaseAuthException catch (e) {
       throw ServerException(
-          message: e.message ?? 'Unknown error', statusCode: e.code);
+          message: e.message ?? 'Unknown error', statusCode: e.code,);
     } on ServerException {
       rethrow;
     } catch (e, s) {
@@ -111,7 +111,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       await _setUserData(_authClient.currentUser!, email);
     } on FirebaseAuthException catch (e) {
       throw ServerException(
-          message: e.message ?? 'Unknown error', statusCode: e.code);
+          message: e.message ?? 'Unknown error', statusCode: e.code,);
     } on ServerException {
       rethrow;
     } catch (e, s) {

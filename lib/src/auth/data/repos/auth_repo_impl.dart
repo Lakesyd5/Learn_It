@@ -24,7 +24,7 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   ResultFuture<LocalUser> signIn(
-      {required String email, required String password}) async {
+      {required String email, required String password,}) async {
     try {
       final result = await _authRemoteDataSource.signIn(
         email: email,

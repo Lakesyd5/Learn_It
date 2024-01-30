@@ -19,7 +19,7 @@ void main() {
     usecase = SignIn(repo);
   });
 
-  final tUser = LocalUser.empty();
+  const tUser = LocalUser.empty();
 
   test('should return [LocalUser] from [AuthRepo]', () async {
     when(
@@ -28,12 +28,12 @@ void main() {
         password: any(named: 'password'),
       ),
     ).thenAnswer(
-      (_) async => Right(tUser),
+      (_) async => const Right(tUser),
     );
 
     final result = await usecase(const SignInParams(email: tEmail, password: tPassword));
 
-    expect(result, equals(Right<dynamic, LocalUser>(tUser)));
+    expect(result, equals(const Right<dynamic, LocalUser>(tUser)));
     verify(() => repo.signIn(email: tEmail, password: tPassword)).called(1);
     verifyNoMoreInteractions(repo);
   });
