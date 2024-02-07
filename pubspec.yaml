@@ -14,6 +14,7 @@ dependencies:
   equatable: ^2.0.5
   file_picker: ^6.1.1
   firebase_auth: ^4.16.0
+  firebase_auth_mocks: ^0.13.0
   firebase_core: ^2.24.2
   firebase_storage: ^11.6.0
   firebase_ui_auth: ^1.7.0
@@ -22,6 +23,7 @@ dependencies:
   flutter_bloc: ^8.1.3
   font_awesome_flutter: ^10.6.0
   get_it: ^7.6.4
+  google_sign_in_mocks: ^0.3.0
   iconly: ^1.0.1
   image_picker: ^1.0.7
   intl: ^0.18.1
@@ -40,13 +42,11 @@ dependencies:
 dev_dependencies:
   bloc_test: ^9.1.5
   fake_cloud_firestore: ^2.4.7
-  firebase_auth_mocks: ^0.13.0
   firebase_storage_mocks: ^0.6.1
   flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
   
-  google_sign_in_mocks: ^0.3.0
   mocktail: ^1.0.2
   very_good_analysis: ^5.1.0
 

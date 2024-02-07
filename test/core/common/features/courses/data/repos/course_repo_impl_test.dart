@@ -3,8 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:learn_it/core/common/features/courses/data/datasources/course_remote_data_source.dart';
 import 'package:learn_it/core/common/features/courses/data/models/course_model.dart';
 import 'package:learn_it/core/common/features/courses/data/repos/course_repo_impl.dart';
+import 'package:learn_it/core/common/features/courses/domain/entities/course.dart';
 import 'package:learn_it/core/common/features/courses/domain/repo/course_repo.dart';
 import 'package:learn_it/core/errors/exception.dart';
+import 'package:learn_it/core/errors/failures.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockCourseRemoteDataSource extends Mock
@@ -35,7 +37,7 @@ void main() {
     'addCourse',
     () {
       test(
-        'should complete successfully call to remote source is successful',
+        'should complete successfully when call to remote source is successful',
         () async {
           when(() => remoteDataSource.addCourse(tCourse)).thenAnswer(
             (_) async => Future.value(),
@@ -44,10 +46,66 @@ void main() {
           final result = await repoImpl.addCourse(tCourse);
 
           expect(result, const Right<dynamic, void>(null));
-          verify(() => remoteDataSource.addCourse(tCourse),).called(1);
+          verify(
+            () => remoteDataSource.addCourse(tCourse),
+          ).called(1);
           verifyNoMoreInteractions(remoteDataSource);
         },
       );
+
+      test(
+        'should return [ServerFailure] when call to remoteSource is unsuccessful',
+        () async {
+          when(() => remoteDataSource.addCourse(any())).thenThrow(tException);
+
+          final result = await repoImpl.addCourse(tCourse);
+          expect(
+            result,
+            Left<Failure, void>(ServerFailure.fromException(tException)),
+          );
+          verify(
+            () => remoteDataSource.addCourse(tCourse),
+          ).called(1);
+          verifyNoMoreInteractions(remoteDataSource);
+        },
+      );
+    },
+  );
+
+  group(
+    'getCourse',
+    () {
+      test(
+        'should return [List<Course>] when call to remote source is successful',
+        () async {
+          when(() => remoteDataSource.getCourses()).thenAnswer(
+            (_) async => [tCourse],
+          );
+
+          final result = await repoImpl.getCourses();
+
+          expect(result, isA<Right<dynamic, List<Course>>>());
+          verify(() => remoteDataSource.getCourses()).called(1);
+          verifyNoMoreInteractions(remoteDataSource);
+        },
+      );
+
+      test(
+          'should retrun [ServerException] when call to remote is unsuccessful',
+          () async {
+        when(
+          () => remoteDataSource.getCourses(),
+        ).thenThrow(tException);
+
+        final result = await repoImpl.getCourses();
+
+        expect(
+          result,
+          Left<Failure, void>(ServerFailure.fromException(tException)),
+        );
+        verify(() => remoteDataSource.getCourses()).called(1);
+        verifyNoMoreInteractions(remoteDataSource);
+      });
     },
   );
 }

@@ -354,7 +354,7 @@ packages:
     source: hosted
     version: "4.16.0"
   firebase_auth_mocks:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: firebase_auth_mocks
       sha256: "1d04d1c14d1ead8be29b255f945a8448e11abcb8dda4cc143e5af9e3583f253a"
@@ -606,7 +606,7 @@ packages:
     source: hosted
     version: "5.7.2"
   google_sign_in_mocks:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: google_sign_in_mocks
       sha256: "09312785f1076b0646bb675a324355c33524bbdb760d1c6ebd5e4dcf04d9a343"
